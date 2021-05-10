@@ -1,6 +1,9 @@
 # IDE
 .idea/
 
+# Built bundle files
+dist/*
+
 # Logs
 logs
 *.log
