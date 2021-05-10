@@ -1,5 +1,5 @@
 const path = require("path"); // NodeJS package to resolve filesystem paths
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 
 console.log(NODE_ENV);
@@ -19,6 +19,23 @@ module.exports = {
             {
                 test: /\.[tj]sx?$/,
                 use: ["ts-loader"],
+            },
+            {
+                test: /\.(s*)css$/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                mode: "local",
+                                localIdentName: "[name]__[local]__[hash:base64:5]",
+                                auto: /\.module\.\w+$/i
+                            }
+                        }
+                    },
+                    "sass-loader"
+                ],
             }
         ]
     },
