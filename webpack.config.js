@@ -2,6 +2,8 @@ const path = require("path"); // NodeJS package to resolve filesystem paths
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const NODE_ENV = process.env.NODE_ENV;
 
+console.log(NODE_ENV);
+
 module.exports = {
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".json"]
@@ -24,5 +26,11 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, "public/index.html")
         })
-    ]
+    ],
+    devServer: {
+        port: 3000, // Webpack dev server port
+        open: true, // Open browser as the server starts
+        hot: true, // Reload server when project files update
+    },
+    devtool: 'source-map' // View source code at browser's dev tools
 };
