@@ -1,0 +1,13 @@
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: linear-gradient(180deg, cyan 10%, darkcyan 100%);
+}
+
+body h3 {
+    color: white;
+}
