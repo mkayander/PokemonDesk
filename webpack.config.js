@@ -9,7 +9,7 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".json"]
     },
     mode: NODE_ENV ? NODE_ENV : "development", // Use Dev mode by default
-    entry: path.resolve(__dirname, "src/index.js"), // Absolute path to app's entry point
+    entry: path.resolve(__dirname, "src/index.ts"), // Absolute path to app's entry point
     output: {
         path: path.resolve(__dirname, "dist"), // Where to save the bundle
         filename: "main.js", // Bundle filename
