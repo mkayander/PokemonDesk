@@ -43,17 +43,6 @@
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "^3.11.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css}": [
-      "pretty-quick --staged",
-      "eslint ./src"
-    ]
-  },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
