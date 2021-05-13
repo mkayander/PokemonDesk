@@ -7,6 +7,7 @@ interface MyArray<T> {
 
     map<U>(fn: (element: T) => U): U[]
 
+    reduce(fn: (acc: T, element: T) => T): T
     reduce<N>(fn: (acc: N, element: T) => N, initial: N): N
 }
 
