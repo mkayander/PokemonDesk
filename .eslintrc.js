@@ -26,6 +26,7 @@ module.exports = {
                 jsx: "never",
             },
         ],
+        "react/self-closing-comp": "warn"
         // "import/newline-after-import": ["warn", { count: 1 }],
     },
     settings: {
