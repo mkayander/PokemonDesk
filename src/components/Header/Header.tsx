@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Header.module.scss";
 
 import { ReactComponent as PokemonLogoSvg } from "./assets/Logo.svg";
+import Layout from "../Layout/Layout";
 
 type NavData = {
     id: number;
@@ -36,7 +37,7 @@ const MENU: NavData[] = [
 const Header: React.FC = () => {
     return (
         <div className={styles.root}>
-            <div className={styles.wrap}>
+            <Layout className={styles.wrap}>
                 <div className={styles.pokemonLogo}>
                     <PokemonLogoSvg />
                 </div>
@@ -47,7 +48,7 @@ const Header: React.FC = () => {
                         </a>
                     ))}
                 </div>
-            </div>
+            </Layout>
         </div>
     );
 };

@@ -5,11 +5,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: $color-third;
+  box-shadow: 0 4px 16px rgba(1, 28, 64, 0.2);
+  //padding-inline: 2rem;
 }
 
 .wrap {
   width: 100%;
-  max-width: 1125px;
+  //max-width: 1125px;
   height: 63px;
   display: flex;
   justify-content: space-between;
