@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Header.module.scss";
 
-import { ReactComponent as PokemonLogoSvg } from "./assets/Logo.svg";
+import { ReactComponent as PokemonLogoSvg } from "./assets/Logo.component.svg";
 import Layout from "../Layout/Layout";
 
 type NavData = {
