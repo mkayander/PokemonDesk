@@ -1,0 +1,62 @@
+@import "../../variables";
+
+.root {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+}
+
+.main {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .content-left {
+
+  }
+
+  .content-right {
+
+  }
+}
+
+.heading {
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  margin-bottom: 48px;
+}
+
+.banner {
+  transform: scale(.5);
+}
+
+h1 {
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  letter-spacing: 4px;
+
+  color: #000000;
+}
+
+h3 {
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+
+  color: #000000;
+}
