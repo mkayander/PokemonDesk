@@ -16,8 +16,8 @@ const HomePage = () => {
                     </h3>
                     <Button text="See pokemons" onClick={event => console.log(event)} />
                 </div>
-                <div className={styles.column}>
-                    <h3>Hello world</h3>
+                <div className={classNames(styles.column, styles.contentRight)}>
+                    <HomeParallax />
                 </div>
             </Layout>
         </div>
