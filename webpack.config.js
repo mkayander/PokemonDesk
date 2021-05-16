@@ -47,7 +47,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.svg$/,
+                test: /\.component.svg$/,
                 use: ["@svgr/webpack", "url-loader"],
             },
             // {
@@ -62,10 +62,11 @@ module.exports = {
             //         },
             //     ],
             // },
-            // {
-            //     test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            //     use: ['url-loader'],
-            // }
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/,
+                    /\.url.svg/],
+                use: ['url-loader'],
+            }
         ],
     },
     plugins: [
