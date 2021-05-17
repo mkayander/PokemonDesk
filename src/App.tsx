@@ -1,9 +1,9 @@
-import React from "react";
 import "./custom.css";
-import { HomePage } from "./pages";
+import { useRoutes } from "@patched/hookrouter";
+import routes from "./routes";
 
 const App = () => {
-    return <HomePage />;
+    return useRoutes(routes);
 };
 
 export default App;

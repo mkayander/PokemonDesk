@@ -1,5 +1,7 @@
 import React from "react";
 
+import { A } from "@patched/hookrouter";
+
 import styles from "./Header.module.scss";
 
 import { ReactComponent as PokemonLogoSvg } from "./assets/Logo.component.svg";
@@ -15,12 +17,12 @@ const MENU: NavData[] = [
     {
         id: 1,
         title: "Home",
-        link: "#",
+        link: "/",
     },
     {
         id: 2,
         title: "Pokédex",
-        link: "#",
+        link: "/pokedex",
     },
     {
         id: 3,
@@ -43,9 +45,9 @@ const Header: React.FC = () => {
                 </div>
                 <div className={styles.menuWrap}>
                     {MENU.map(nav => (
-                        <a key={nav.id} href={nav.link} className={styles.menuLink}>
+                        <A key={nav.id} href={nav.link} className={styles.menuLink}>
                             {nav.title}
-                        </a>
+                        </A>
                     ))}
                 </div>
             </Layout>
