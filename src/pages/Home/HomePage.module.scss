@@ -1,0 +1,48 @@
+@import "../../variables";
+
+.root {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+}
+
+.main {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .content-left {
+
+  }
+
+  .content-right {
+    margin-right: -159px;
+  }
+
+  button {
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    margin-bottom: 32px;
+    font-weight: bold;
+    letter-spacing: 4px;
+  }
+
+  h3 {
+    margin-bottom: 48px;
+    font-weight: normal;
+  }
+}
+
+.banner {
+  transform: scale(.5);
+}

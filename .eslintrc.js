@@ -26,6 +26,13 @@ module.exports = {
                 jsx: "never",
             },
         ],
+        "react/self-closing-comp": "warn",
+        "react/prop-types": "off",
+        "react/jsx-props-no-spreading": ["warn",
+            {
+                html: "ignore",
+                custom: "enforce"
+            }]
         // "import/newline-after-import": ["warn", { count: 1 }],
     },
     settings: {
