@@ -1,0 +1,41 @@
+@import "../../variables";
+
+.root {
+  padding-top: 2rem;
+  z-index: -1;
+  display: flex;
+  min-height: 100vh;
+  flex-flow: column;
+  align-items: center;
+  background-color: $color_danger;
+
+  h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    z-index: 5;
+  }
+}
+
+.bg-404-text {
+  position: absolute;
+  margin-top: -3rem;
+  z-index: 2;
+
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40vw;
+  display: flex;
+  align-items: center;
+  letter-spacing: 4px;
+
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.team-image {
+  z-index: 3;
+  width: 40%;
+}
