@@ -10,7 +10,6 @@ $border_radius: 11px;
   position: relative;
   display: flex;
   justify-content: center;
-  align-self: flex-start;
   transition: $transition_speed;
   background-color: $color_confirm;
   box-shadow: inset 0 $idle_height 0 rgba(0, 0, 0, 0.18);
