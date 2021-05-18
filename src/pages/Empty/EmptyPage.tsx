@@ -1,13 +1,20 @@
 import React from "react";
-import { Header } from "../../components";
+import { Header, Layout } from "../../components";
 
-const EmptyPage = () => {
+import styles from "./EmptyPage.module.scss";
+
+type EmptyPageProps = {
+    title?: string;
+};
+
+const EmptyPage: React.FC<EmptyPageProps> = ({ title }) => {
     return (
-        <div>
+        <div style={{ height: "100vh" }} className={styles.root}>
             <Header />
-            <div>
+            <Layout style={{ paddingTop: "2rem" }}>
                 <h1>This is an Empty Page!</h1>
-            </div>
+                <h3>{title}</h3>
+            </Layout>
         </div>
     );
 };
