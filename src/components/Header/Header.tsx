@@ -1,42 +1,18 @@
 import React from "react";
 
-import { A } from "@patched/hookrouter";
+import { A, usePath } from "@patched/hookrouter";
 
+import cn from "classnames";
 import styles from "./Header.module.scss";
 
 import { ReactComponent as PokemonLogoSvg } from "./assets/Logo.component.svg";
 import Layout from "../Layout/Layout";
-
-type NavData = {
-    id: number;
-    title: string;
-    link: string;
-};
-
-const MENU: NavData[] = [
-    {
-        id: 1,
-        title: "Home",
-        link: "/",
-    },
-    {
-        id: 2,
-        title: "Pokédex",
-        link: "/pokedex",
-    },
-    {
-        id: 3,
-        title: "Legendaries",
-        link: "#",
-    },
-    {
-        id: 4,
-        title: "Documentation",
-        link: "#",
-    },
-];
+import { MENU } from "../../routes";
 
 const Header: React.FC = () => {
+    const path = usePath();
+    console.log("##: current path = ", path);
+
     return (
         <div className={styles.root}>
             <Layout className={styles.wrap}>
@@ -45,7 +21,12 @@ const Header: React.FC = () => {
                 </div>
                 <div className={styles.menuWrap}>
                     {MENU.map(nav => (
-                        <A key={nav.id} href={nav.link} className={styles.menuLink}>
+                        <A
+                            key={nav.title}
+                            href={nav.link}
+                            className={cn(styles.menuLink, {
+                                [styles.active]: nav.link === path,
+                            })}>
                             {nav.title}
                         </A>
                     ))}
