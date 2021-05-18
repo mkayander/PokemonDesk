@@ -8,12 +8,10 @@
 
   background: $color-third;
   box-shadow: 0 4px 16px rgba(1, 28, 64, 0.2);
-  //padding-inline: 2rem;
 }
 
 .wrap {
   width: 100%;
-  //max-width: 1125px;
   height: 63px;
   display: flex;
   justify-content: space-between;
@@ -58,11 +56,20 @@
       pointer-events: none;
     }
 
+    @mixin active-link {
+      width: 100%;
+      opacity: 1;
+    }
+
+    &.active {
+      &:after {
+        @include active-link
+      }
+    }
+
     &:hover {
       &:after {
-        transition: .3s;
-        width: 100%;
-        opacity: 1;
+        @include active-link
       }
     }
   }
