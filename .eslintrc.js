@@ -28,12 +28,17 @@ module.exports = {
         ],
         "react/self-closing-comp": "warn",
         "react/prop-types": "off",
-        "react/jsx-props-no-spreading": ["warn",
+        "react/jsx-props-no-spreading": [
+            "warn",
             {
                 html: "ignore",
-                custom: "enforce"
-            }]
+                custom: "enforce",
+            },
+        ],
         // "import/newline-after-import": ["warn", { count: 1 }],
+
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"],
     },
     settings: {
         "import/resolver": {
