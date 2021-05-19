@@ -1,7 +1,9 @@
 @import "../../variables";
+@import "../../breakpoints";
 
 .root {
   padding-top: 2rem;
+  padding-inline: 1rem;
   z-index: -1;
   display: flex;
   min-height: 100vh;
@@ -9,9 +11,37 @@
   align-items: center;
   background-color: $color_danger;
 
+  @include media("<phone") {
+    padding-top: 25vh;
+  }
+
   h3 {
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+
+    @include media("<tablet") {
+      font-size: 28px;
+      line-height: 56px;
+    }
+
+    @include media("<phone") {
+      font-size: 35px;
+      text-align: center;
+
+      span {
+        display: block;
+        line-height: 24px;
+      }
+    }
+
+    span {
+      color: $color_white
+    }
   }
 
   button {

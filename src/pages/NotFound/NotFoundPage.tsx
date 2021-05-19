@@ -11,7 +11,9 @@ const NotFoundPage = () => {
         <div className={styles.root}>
             <h1 className={styles.bg404Text}>404</h1>
             <img className={styles.teamImage} src={teamPng} alt="Pokemon Team" />
-            <h3>The rocket team has won this time</h3>
+            <h3>
+                <span>The rocket team</span> has won this time
+            </h3>
             <Button text="Return" bgColor="bg-warning" onClick={() => navigate("/")} />
         </div>
     );
