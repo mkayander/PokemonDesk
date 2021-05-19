@@ -5,6 +5,7 @@ import styles from "./NotFoundPage.module.scss";
 
 import teamPng from "./assets/Team_Rocket_trio_OS.png";
 import { Button } from "../../components";
+import { RouteLink } from "../../routes";
 
 const NotFoundPage = () => {
     return (
@@ -14,7 +15,7 @@ const NotFoundPage = () => {
             <h3>
                 <span>The rocket team</span> has won this time
             </h3>
-            <Button text="Return" bgColor="bg-warning" onClick={() => navigate("/")} />
+            <Button text="Return" bgColor="bg-warning" onClick={() => navigate(RouteLink.HOME)} />
         </div>
     );
 };

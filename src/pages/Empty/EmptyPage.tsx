@@ -1,7 +1,5 @@
 import React from "react";
-import { Header, Layout } from "../../components";
-
-import styles from "./EmptyPage.module.scss";
+import { ContentPageBase } from "../../components";
 
 type EmptyPageProps = {
     title?: string;
@@ -9,13 +7,10 @@ type EmptyPageProps = {
 
 const EmptyPage: React.FC<EmptyPageProps> = ({ title }) => {
     return (
-        <div style={{ height: "100vh" }} className={styles.root}>
-            <Header />
-            <Layout style={{ paddingTop: "2rem" }}>
-                <h1>This is an Empty Page!</h1>
-                <h3>{title}</h3>
-            </Layout>
-        </div>
+        <ContentPageBase>
+            <h1>This is an Empty Page!</h1>
+            <h3>{title}</h3>
+        </ContentPageBase>
     );
 };
 

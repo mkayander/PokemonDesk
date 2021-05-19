@@ -1,32 +1,39 @@
 import React from "react";
 import { HookRouter } from "@patched/hookrouter";
-import { EmptyPage, HomePage } from "./pages";
+import { EmptyPage, HomePage, PokedexPage } from "./pages";
+
+export enum RouteLink {
+    HOME = "/",
+    POKEDEX = "/pokedex",
+    LEGENDARIES = "/legendaries",
+    DOCUMENTATION = "/documentation",
+}
 
 type NavData = {
     title: string;
-    link: string;
+    link: RouteLink;
     component: () => JSX.Element;
 };
 
 export const MENU: NavData[] = [
     {
         title: "Home",
-        link: "/",
+        link: RouteLink.HOME,
         component: () => <HomePage />,
     },
     {
         title: "Pokédex",
-        link: "/pokedex",
-        component: () => <EmptyPage title="Pokédex" />,
+        link: RouteLink.POKEDEX,
+        component: () => <PokedexPage />,
     },
     {
         title: "Legendaries",
-        link: "/legendaries",
+        link: RouteLink.LEGENDARIES,
         component: () => <EmptyPage title="Legendaries" />,
     },
     {
         title: "Documentation",
-        link: "/documentation",
+        link: RouteLink.DOCUMENTATION,
         component: () => <EmptyPage title="Documentation" />,
     },
 ];

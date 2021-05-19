@@ -1,37 +1,26 @@
 import React from "react";
 
 import classNames from "classnames";
+import { navigate } from "@patched/hookrouter";
 import styles from "./HomePage.module.scss";
-import { Button, Header, Heading, HomeParallax } from "../../components";
-import Layout from "../../components/Layout/Layout";
+import { Button, ContentPageBase, Heading, HomeParallax } from "../../components";
 import { BtnSize } from "../../components/Button/Button";
+import { RouteLink } from "../../routes";
 
 const HomePage = () => {
     return (
-        <div className={styles.root}>
-            <Header />
-            <Layout className={styles.main}>
-                <div className={styles.column}>
-                    <Heading variant="h1">
-                        Find all your favorite Pokemon
-                    </Heading>
-                    <Heading>
-                        You can know the type of Pokemon, its strengths, disadvantages and abilities
-                    </Heading>
-                    <Button text="Start now!" fullWidth bgColor="bg-warning" />
-                    <Button text="See pokemons" onClick={event => console.log(event)} />
-                    <Button
-                        text="Read more..."
-                        onClick={event => console.log(event)}
-                        bgColor="bg-secondary"
-                        btnSize={BtnSize.small}
-                    />
-                </div>
-                <div className={classNames(styles.column, styles.contentRight)}>
-                    <HomeParallax />
-                </div>
-            </Layout>
-        </div>
+        <ContentPageBase className={styles.main}>
+            <div className={styles.column}>
+                <Heading variant="h1">Find all your favorite Pokemon</Heading>
+                <Heading>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
+                <Button text="Start now!" fullWidth bgColor="bg-warning" />
+                <Button text="See pokemons" onClick={() => navigate(RouteLink.POKEDEX)} />
+                <Button text="Read more..." bgColor="bg-secondary" btnSize={BtnSize.small} />
+            </div>
+            <div className={classNames(styles.column, styles.contentRight)}>
+                <HomeParallax />
+            </div>
+        </ContentPageBase>
     );
 };
 
