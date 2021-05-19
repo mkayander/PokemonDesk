@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     console.log("##: current path = ", path);
 
     return (
-        <div className={styles.root}>
+        <header className={styles.root}>
             <Layout className={styles.wrap}>
                 <div className={styles.pokemonLogo}>
                     <PokemonLogoSvg />
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
                     ))}
                 </div>
             </Layout>
-        </div>
+        </header>
     );
 };
 
