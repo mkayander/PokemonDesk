@@ -1,0 +1,53 @@
+@import "../../variables";
+
+.root {
+  display: flex;
+  flex-flow: column;
+}
+
+.head-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 41px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.searchInput {
+  display: flex;
+  flex-flow: column;
+  margin-top: 2rem;
+  background-color: $color-white;
+  box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+  border-radius: 40px;
+  padding: 1rem;
+
+  input {
+    border: none;
+    background: none;
+
+    margin-inline: 1rem;
+
+    font-family: Source Sans Pro, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: rgba(33, 33, 33, 0.8);
+
+    &:focus {
+      border: none;
+    }
+  }
+}
+
+.cardsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
