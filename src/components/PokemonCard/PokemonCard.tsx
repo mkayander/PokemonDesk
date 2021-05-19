@@ -1,32 +1,38 @@
 import React from "react";
 
+import cn from "classnames";
 import s from "./PokemonCard.module.scss";
 import { Heading } from "../index";
+import { Pokemon } from "../../data/models/Pokemon";
 
-const PokemonCard = () => {
+type PokemonCardProps = {
+    pokemon: Pokemon;
+};
+
+const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
+    const { stats } = pokemon;
     return (
         <div className={s.root}>
             <div className={s.infoWrap}>
-                <Heading className={s.titleName}>Charmander</Heading>
+                <Heading className={s.titleName}>{pokemon.cleanName}</Heading>
                 <div className={s.statWrap}>
                     <div className={s.statItem}>
-                        <div className={s.statValue}>52</div>
+                        <div className={s.statValue}>{stats.attack}</div>
                         Attack
                     </div>
                     <div className={s.statItem}>
-                        <div className={s.statValue}>43</div>
+                        <div className={s.statValue}>{stats.defense}</div>
                         Defense
                     </div>
                 </div>
                 <div className={s.labelWrap}>
-                    <span className={s.label}>Fire</span>
+                    {pokemon.types.map((value: string) => (
+                        <span className={cn(s.label, s[value])}>{value}</span>
+                    ))}
                 </div>
             </div>
-            <div className={s.pictureWrap}>
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
-                    alt="Charmander"
-                />
+            <div className={cn(s.pictureWrap, s[pokemon.types[0]])}>
+                <img src={pokemon.img} alt={pokemon.name} />
             </div>
         </div>
     );

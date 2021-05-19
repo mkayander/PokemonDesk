@@ -1,6 +1,8 @@
+@import "pokemon-variables";
+
 .root {
   width: 351px;
-  height: 136px;
+  height: 160px;
   box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
   background: #F6F7F9;
   border-radius: 8px;
@@ -26,6 +28,7 @@
 
 .titleName {
   margin-bottom: 12px;
+  text-transform: capitalize;
   text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
 }
 
@@ -101,6 +104,31 @@
   &:last-child {
     margin-right: 0;
   }
+
+}
+
+.water {
+  background: $water_color;
+}
+
+.grass {
+  background: $grass_color;
+}
+
+.poison {
+  background: $poison_color;
+}
+
+.fire {
+  background: $fire_color;
+}
+
+.flying {
+  background: $flying_color;
+}
+
+.bug {
+  background: $bug_color;
 }
 
 .labelWrap {
