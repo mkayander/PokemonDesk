@@ -24,6 +24,8 @@
   margin-top: -3rem;
   z-index: 2;
 
+  pointer-events: none;
+
   font-family: Karla, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -36,6 +38,7 @@
 }
 
 .team-image {
+  pointer-events: none;
   z-index: 3;
   width: 40%;
 }
