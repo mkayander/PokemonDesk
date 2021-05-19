@@ -7,11 +7,11 @@
 
 html, body, #root {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 html {
-  width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
 }
 
 html, body {
@@ -74,4 +74,16 @@ button {
 
 .bg-warning {
   background-color: $color_third;
+}
+
+.bg-primary-gradient {
+  background: $background_gradient;
+}
+
+.bg-grey-gradient {
+  background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
+}
+
+.bg-white {
+  background-color: $color_white;
 }
