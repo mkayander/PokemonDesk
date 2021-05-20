@@ -4,7 +4,7 @@ import { ContentPageBase, PokemonCard } from "../../components";
 import styles from "./PokedexPage.module.scss";
 import { getPokemons } from "../../data/api/api";
 
-const PokedexPage = () => {
+const PokedexPage: React.FC = () => {
     return (
         <ContentPageBase className={styles.root} bgColor="bg-grey-gradient">
             <h1 className={styles.headText}>
