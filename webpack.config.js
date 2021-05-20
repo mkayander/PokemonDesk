@@ -63,10 +63,9 @@ module.exports = {
             //     ],
             // },
             {
-                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/,
-                    /\.url.svg/],
-                use: ['url-loader'],
-            }
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.url.svg/],
+                use: ["url-loader"],
+            },
         ],
     },
     plugins: [
@@ -78,6 +77,7 @@ module.exports = {
         port: 3000, // Webpack dev server port
         open: true, // Open browser as the server starts
         hot: true, // Reload server when project files update
+        historyApiFallback: true, // Required to allow different URL's
     },
     devtool: "source-map", // View source code at browser's dev tools
 };

@@ -5,13 +5,12 @@
   box-sizing: border-box;
 }
 
-html {
-  width: 100vw;
-  height: 100vh;
+html, body, #root {
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
-body {
+html {
   width: 100%;
 }
 
@@ -75,4 +74,16 @@ button {
 
 .bg-warning {
   background-color: $color_third;
+}
+
+.bg-primary-gradient {
+  background: $background_gradient;
+}
+
+.bg-grey-gradient {
+  background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
+}
+
+.bg-white {
+  background-color: $color_white;
 }

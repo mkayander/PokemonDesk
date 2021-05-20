@@ -10,16 +10,14 @@ $border_radius: 11px;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
   transition: $transition_speed;
-  width: auto;
   background-color: $color_confirm;
   box-shadow: inset 0 $idle_height 0 rgba(0, 0, 0, 0.18);
   border-radius: $border_radius;
   padding: 1rem;
   cursor: pointer;
 
-  margin-right: auto;
+  //margin-right: auto;
 
 
   &:after {
@@ -62,6 +60,8 @@ $border_radius: 11px;
     transition: $transition_speed;
     margin-bottom: -$idle_height;
 
+    align-self: flex-start;
+
     pointer-events: none;
 
     font-family: Karla, sans-serif;
@@ -76,7 +76,7 @@ $border_radius: 11px;
 }
 
 .full-width {
-  margin-right: 0;
+  align-self: stretch;
   width: 100%;
 }
 
