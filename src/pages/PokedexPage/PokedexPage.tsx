@@ -3,12 +3,17 @@ import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
 import { getPokemons } from "../../data/api/api";
+import { usePokemons } from "../../hooks";
 
 const PokedexPage: React.FC = () => {
+    const pokemonsHook = usePokemons();
+
+    console.log(pokemonsHook.totalCount);
+
     return (
         <ContentPageBase className={styles.root} bgColor="bg-grey-gradient">
             <h1 className={styles.headText}>
-                800 <b>Pokemons</b> for you to choose your favorite
+                {pokemonsHook.totalCount} <b>Pokemons</b> for you to choose your favorite
             </h1>
             <div className={styles.searchInput}>
                 <input placeholder="Enter pokemon name..." />

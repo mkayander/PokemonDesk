@@ -1,7 +1,13 @@
 import { Pokemon } from "../models/Pokemon";
 import mockData from "./mockdata";
+import { PokemonsResponse } from "../models/response/PokemonsResponse";
 
 export const getPokemons = (): Pokemon[] => {
+    fetch("https://zar.hosthot.ru/api/v1/pokemons")
+        .then(response => response.json())
+        .then((data: PokemonsResponse) => {
+            console.log("***: newData: ", data);
+        });
     return mockData.map(value => {
         const { stats: rawStats } = value;
 
