@@ -2,7 +2,7 @@ import React from "react";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
-import { getPokemons } from "../../data/api/api";
+import { getPokemons } from "../../api/api";
 import { usePokemons } from "../../hooks";
 
 const PokedexPage: React.FC = () => {
