@@ -1,10 +1,13 @@
 /* eslint-disable camelcase */
 
-export type PokemonsResponse = {
+export type PokemonsListInfo = {
     total: number;
     count: number;
     offset: number;
     limit: number;
+}
+
+export type PokemonsResponse = PokemonsListInfo & {
     pokemons: Array<{
         name_clean: string;
         abilities: string[];
