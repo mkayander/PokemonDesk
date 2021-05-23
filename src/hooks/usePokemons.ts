@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { Pokemon } from "../data/models/Pokemon";
-import { fetchPokemons } from "../api/api";
+import { fetchPokemons, PokemonsApiResult } from "../api/api";
 
 const usePokemons = () => {
-    const [pokemons, setPokemons] = useState<Pokemon[]>();
-    const [totalCount, setTotalCount] = useState<number>();
+    const [data, setData] = useState<PokemonsApiResult>();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     useEffect(() => {
-        fetchPokemons().then(result => {
-            setTotalCount(result.total);
-            setPokemons(result.pokemons);
-        });
+        fetchPokemons()
+            .then(result => {
+                setData(result);
+                setErrorMessage(null);
+            })
+            .catch(reason => setErrorMessage(reason.message))
+            .finally(() => setIsLoading(false));
     }, []);
 
-    return { pokemons, totalCount };
+    return { data, isLoading, errorMessage };
 };
 
 export type PokemonsHook = ReturnType<typeof usePokemons>;

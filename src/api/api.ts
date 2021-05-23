@@ -1,12 +1,14 @@
 import { Pokemon } from "../data/models/Pokemon";
 import { PokemonsListInfo, PokemonsResponse } from "../data/models/response/PokemonsResponse";
+import config from "./config";
+import request from "../utils/request";
 
 export type PokemonsApiResult = PokemonsListInfo & {
     pokemons: Pokemon[];
 };
 
 export const fetchPokemons = async (): Promise<PokemonsApiResult> => {
-    const response = await fetch("https://zar.hosthot.ru/api/v1/pokemons");
+    const response = await request(config.endpoints.getPokemons);
     const data: PokemonsResponse = await response.json();
 
     console.log("***: newData: ", data);
