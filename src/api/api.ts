@@ -3,12 +3,14 @@ import { PokemonsListInfo, PokemonsResponse } from "../data/models/response/Poke
 import config from "./config";
 import request from "./request";
 
+export type ApiOperation<T> = (params?: {}) => Promise<T>;
+
 export type PokemonsApiResult = PokemonsListInfo & {
     pokemons: Pokemon[];
 };
 
-export const fetchPokemons = async (): Promise<PokemonsApiResult> => {
-    const data: PokemonsResponse = await request(config.endpoints.getPokemons);
+export const fetchPokemons: ApiOperation<PokemonsApiResult> = async (params): Promise<PokemonsApiResult> => {
+    const data: PokemonsResponse = await request(config.endpoints.getPokemons, params);
 
     console.log("***: newData: ", data);
 
