@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
@@ -6,7 +6,13 @@ import useApiData from "../../hooks/useApiData";
 import { fetchPokemons } from "../../api/api";
 
 const PokedexPage: React.FC = () => {
-    const { data, isLoading, errorMessage } = useApiData(fetchPokemons);
+    const [searchValue, setSearchValue] = useState<string>("");
+
+    const { data, isLoading, errorMessage } = useApiData(fetchPokemons, { name: searchValue }, [searchValue]);
+
+    const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        setSearchValue(event.target.value);
+    };
 
     return (
         <ContentPageBase className={styles.root} bgColor="bg-grey-gradient">
@@ -28,7 +34,7 @@ const PokedexPage: React.FC = () => {
                 </>
             )}
             <div className={styles.searchInput}>
-                <input placeholder="Enter pokemon name..." />
+                <input placeholder="Enter pokemon name..." value={searchValue} onChange={handleSearchChange} />
             </div>
 
             <div className={styles.cardsContainer}>
