@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 
-type PokemonResponse = {
+type PokemonRaw = {
     name_clean: string;
     abilities: string[];
     stats: {
@@ -20,9 +20,9 @@ type PokemonResponse = {
     is_default: true;
     order: number;
     weight: number;
-}
+};
 
-const pokemons: PokemonResponse[] = [
+const pokemons: PokemonRaw[] = [
     {
         name_clean: "bulbasaur",
         abilities: ["overgrow", "chlorophyll"],
