@@ -18,25 +18,15 @@ export const fetchPokemons = async (): Promise<PokemonsApiResult> => {
             const { stats: rawStats } = value;
 
             const instance: Pokemon = {
-                id: value.id,
+                ...value,
                 cleanName: value.name_clean,
-                abilities: value.abilities,
                 stats: {
-                    hp: rawStats.hp,
-                    attack: rawStats.attack,
-                    defense: rawStats.defense,
+                    ...rawStats,
                     specialAttack: rawStats["special-attack"],
                     specialDefense: rawStats["special-defense"],
-                    speed: rawStats.speed,
                 },
-                types: value.types,
-                img: value.img,
-                name: value.name,
                 baseExperience: value.base_experience,
-                height: value.height,
                 isDefault: value.is_default,
-                order: value.order,
-                weight: value.weight,
             };
 
             return instance;
