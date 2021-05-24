@@ -8,8 +8,7 @@ export type PokemonsApiResult = PokemonsListInfo & {
 };
 
 export const fetchPokemons = async (): Promise<PokemonsApiResult> => {
-    const response = await request(config.endpoints.getPokemons);
-    const data: PokemonsResponse = await response.json();
+    const data: PokemonsResponse = await request(config.endpoints.getPokemons);
 
     console.log("***: newData: ", data);
 
