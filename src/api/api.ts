@@ -1,7 +1,7 @@
 import { Pokemon } from "../data/models/Pokemon";
 import { PokemonsListInfo, PokemonsResponse } from "../data/models/response/PokemonsResponse";
 import config from "./config";
-import request from "../utils/request";
+import request from "./request";
 
 export type PokemonsApiResult = PokemonsListInfo & {
     pokemons: Pokemon[];

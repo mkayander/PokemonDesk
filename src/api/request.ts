@@ -1,6 +1,6 @@
 import Url from "url";
-import getUrl from "./getUrl";
-import { Endpoint } from "../api/config";
+import getUrl from "../utils/getUrl";
+import { Endpoint } from "./config";
 
 function request(endpoint: Endpoint) {
     const uri = Url.format(getUrl(endpoint));
