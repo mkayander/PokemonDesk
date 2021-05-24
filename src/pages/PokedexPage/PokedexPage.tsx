@@ -2,10 +2,11 @@ import React from "react";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
-import { usePokemons } from "../../hooks";
+import useApiData from "../../hooks/useApiData";
+import { fetchPokemons } from "../../api/api";
 
 const PokedexPage: React.FC = () => {
-    const { data, isLoading, errorMessage } = usePokemons();
+    const { data, isLoading, errorMessage } = useApiData(fetchPokemons);
 
     return (
         <ContentPageBase className={styles.root} bgColor="bg-grey-gradient">
