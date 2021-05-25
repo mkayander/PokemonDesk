@@ -44,16 +44,12 @@
     border: $border_width solid transparentize($color-primary, 0.5);
     outline: none;
   }
-
-  &:active {
-
-  }
 }
 
 .cardsContainer {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: start;
   margin-top: 2rem;
 }
 
