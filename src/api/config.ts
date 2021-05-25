@@ -15,6 +15,10 @@ const config = {
             method: "GET",
             pathname: "pokemons",
         },
+        getPokemonById: {
+            method: "GET",
+            pathname: "pokemon/:id/"
+        }
     },
 };
 

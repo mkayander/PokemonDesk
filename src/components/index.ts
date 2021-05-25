@@ -6,3 +6,4 @@ export { default as HomeParallax } from "./HomeParallax/HomeParallax";
 export { default as Heading } from "./Heading/Heading";
 export { default as PokemonCard } from "./PokemonCard/PokemonCard";
 export { default as ContentPageBase } from "./ContentPageBase/ContentPageBase";
+export { default as PokemonDetailsCard } from "./PokemonDetailsCard/PokemonDetailsCard";

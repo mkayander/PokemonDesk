@@ -1,3 +1,4 @@
+@import "../../variables";
 @import "pokemon-variables";
 
 .root {
@@ -14,7 +15,11 @@
 
   &:hover {
     transform: scale(1.03);
-    transition: all ease-in-out 0s;
+    transition: all ease-in-out .10s;
+  }
+
+  &:focus {
+    box-shadow: 4px 4px 4px transparentize($color_primary, 0.7);
   }
 }
 
@@ -73,6 +78,7 @@
   height: 100%;
   background: linear-gradient(270deg, #B33327 0.15%, #D93E30 100%);
   position: absolute;
+  top: 0;
   right: 0;
   display: flex;
   justify-content: center;

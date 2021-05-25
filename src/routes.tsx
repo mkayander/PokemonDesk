@@ -1,18 +1,20 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { HookRouter } from "@patched/hookrouter";
-import { EmptyPage, HomePage, PokedexPage } from "./pages";
+import { EmptyPage, HomePage, PokedexPage, PokemonPage } from "./pages";
+import { PokemonPageProps } from "./pages/PokemonPage/PokemonPage";
 
 export enum RouteLink {
     HOME = "/",
     POKEDEX = "/pokedex",
     LEGENDARIES = "/legendaries",
     DOCUMENTATION = "/documentation",
+    POKEMON = "/pokedex/:id",
 }
 
 type NavData = {
     title: string;
     link: RouteLink;
-    component: () => JSX.Element;
+    component: (props: PropsWithChildren<any>) => JSX.Element;
 };
 
 export const MENU: NavData[] = [
@@ -38,7 +40,15 @@ export const MENU: NavData[] = [
     },
 ];
 
-const routes: HookRouter.RouteObject<JSX.Element> = MENU.reduce((acc, item) => {
+const SECONDARY_ROUTES: NavData[] = [
+    {
+        title: "Pokemon",
+        link: RouteLink.POKEMON,
+        component: ({ id }: PokemonPageProps) => <PokemonPage id={id} />,
+    },
+];
+
+const routes: HookRouter.RouteObject<JSX.Element> = [...SECONDARY_ROUTES, ...MENU].reduce((acc, item) => {
     acc[item.link] = item.component;
     return acc;
 }, {} as HookRouter.RouteObject<JSX.Element>);
