@@ -33,9 +33,9 @@ const PokedexPage: React.FC = () => {
                     <p className={styles.error}>{errorMessage}</p>
                 </>
             )}
-            <div className={styles.searchInput}>
-                <input placeholder="Enter pokemon name..." value={searchValue} onChange={handleSearchChange} />
-            </div>
+
+            <input className={styles.searchInput} placeholder="Enter pokemon name..." value={searchValue}
+                   onChange={handleSearchChange} />
 
             <div className={styles.cardsContainer}>
                 {data?.pokemons?.map(pokemon => (
