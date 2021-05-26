@@ -11,14 +11,15 @@ const PokedexPage: React.FC = () => {
 
     const debouncedValue = useDebounce(searchValue, 500);
 
-    const { data, isLoading, errorMessage } = useApiData(fetchPokemons, { name: debouncedValue }, [debouncedValue]);
+    const query = { name: debouncedValue };
+    const { data, isLoading, errorMessage } = useApiData(fetchPokemons, { query }, [debouncedValue]);
 
     const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         setSearchValue(event.target.value);
     };
 
     return (
-        <ContentPageBase className={styles.root} bgColor="bg-grey-gradient">
+        <ContentPageBase className={styles.root}>
             {!errorMessage && (
                 <h1 className={styles.headText}>
                     {isLoading ? (

@@ -1,13 +1,21 @@
 import { UrlObject } from "url";
 import config, { Endpoint } from "../api/config";
+import ParameterError from "../exceptions/ParameterError";
+import { PathArguments } from "../api/api";
 
-export default function getUrlWithParams(endpoint: Endpoint, query?: {}, urlArgs?: Record<string, string>): UrlObject {
-    let pathname = `/${config.server.apiRoot}/${endpoint.pathname}`
+export default function getUrlWithParams(endpoint: Endpoint, { query, urlArgs }: PathArguments = {}): UrlObject {
+    let pathname = `/${config.server.apiRoot}/${endpoint.pathname}`;
+
     if (urlArgs) {
         for (const [key, value] of Object.entries(urlArgs)) {
-            console.log("Params");
-            pathname = pathname.replace(`:${key}`, value)
+            console.log("URL Params: ", key, value);
+            pathname = pathname.replace(`:${key}`, value);
         }
+    }
+
+    const missedParamIndex = pathname.indexOf(":");
+    if (missedParamIndex > -1) {
+        throw new ParameterError(`URL argument not specified for parameter "${pathname.substring(missedParamIndex)}"`);
     }
 
     return {

@@ -6,6 +6,7 @@ import s from "./PokemonCard.module.scss";
 import { Heading } from "../index";
 import { Pokemon } from "../../data/models/Pokemon";
 import { RouteLink } from "../../routes";
+import TypeLabel from "./TypeLabel";
 
 type PokemonCardProps = {
     pokemon: Pokemon;
@@ -32,9 +33,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
                 </div>
                 <div className={s.labelWrap}>
                     {pokemon.types.map((value: string) => (
-                        <span key={value} className={cn(s.label, s[value])}>
-                            {value}
-                        </span>
+                        <TypeLabel type={value}/>
                     ))}
                 </div>
             </div>

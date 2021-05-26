@@ -1,9 +1,9 @@
 export interface Pokemon {
     id: number;
     cleanName: string;
-    abilities: Ability[] | string[];
+    abilities: string[];
     stats: Stats;
-    types: PokeType[] | string[];
+    types: string[];
     img: string;
     name: string;
     baseExperience: number;

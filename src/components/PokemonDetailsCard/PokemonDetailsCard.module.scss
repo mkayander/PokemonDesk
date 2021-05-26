@@ -1,8 +1,143 @@
+@import "../../variables";
+
 .root {
   position: relative;
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
   max-width: 800px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, darken($color-danger, 25), $color-danger);
   height: 420px;
+
+  overflow: hidden;
+
+  .display {
+    display: flex;
+    position: relative;
+    width: 80%;
+    background: linear-gradient(270deg, #B33327 0.15%, #D93E30 100%);
+    box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
+
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+    }
+
+    .labels-wrap {
+      width: 100%;
+      display: flex;
+      margin: 1rem 0;
+      align-self: flex-end;
+      flex-flow: row wrap;
+      justify-content: flex-end;
+
+      & > * {
+        margin-right: 0.85rem;
+      }
+    }
+  }
+
+  .info {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    color: $color_white;
+    padding: 1rem 1rem;
+
+    .heading {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-between;
+
+      margin: 0.5rem 0;
+
+      text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+
+      h3 {
+        text-transform: capitalize;
+      }
+
+      h5 {
+      }
+    }
+  }
+}
+
+.info-card {
+  display: flex;
+  flex-flow: column wrap;
+  background: $background_white_gradient;
+  border-radius: 8px;
+  padding: 1rem 1rem;
+  color: $color_dark;
+
+  margin-top: 1.5rem;
+
+  &.stats-card {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+}
+
+.stats-meter-container {
+  position: relative;
+  flex-grow: 1;
+
+  &:last-child {
+    margin-left: 1rem;
+  }
+
+  .meter {
+    position: relative;
+    height: 6px;
+    width: 100%;
+    border-radius: 8px;
+    background: darken($color_white, 2);
+
+    .meter-body {
+      height: 100%;
+      width: 77%;
+      border-radius: 8px;
+      background: linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%);
+    }
+
+    &.health {
+      .meter-body {
+        background: linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%);
+      }
+    }
+
+    &.experience {
+      .meter-body {
+        background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+      }
+    }
+  }
+}
+
+.fight-stats-block {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  .info-card {
+    min-width: 30%;
+    align-items: center;
+
+    & > p:first-child {
+      margin-bottom: 0.85rem;
+    }
+  }
+}
+
+.abilities {
+  text-transform: capitalize;
 }

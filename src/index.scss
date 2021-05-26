@@ -46,7 +46,11 @@ h5 {
 }
 
 p {
+  margin: 0 0;
+  font-style: normal;
+  font-weight: normal;
   font-size: 16px;
+  line-height: 19px;
 }
 
 button {
@@ -77,13 +81,18 @@ button {
 }
 
 .bg-primary-gradient {
-  background: $background_gradient;
+  background: $background_primary_gradient;
 }
 
 .bg-grey-gradient {
-  background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
+  background: $background_white_gradient;
 }
 
 .bg-white {
   background-color: $color_white;
+}
+
+
+.color-error {
+  color: $color_danger
 }

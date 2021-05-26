@@ -17,7 +17,7 @@ const config = {
         },
         getPokemonById: {
             method: "GET",
-            pathname: "pokemon/:id/"
+            pathname: "pokemon/:id"
         }
     },
 };
