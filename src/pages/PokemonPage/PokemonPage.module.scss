@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  & > h5 {
+    margin-bottom: 2rem;
+  }
+}

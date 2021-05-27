@@ -17,6 +17,9 @@
 }
 
 .searchInput {
+  $border_width: 2px;
+  transition: 0.2s;
+
   display: flex;
   flex-flow: column;
   margin-top: 2rem;
@@ -25,30 +28,28 @@
   border-radius: 40px;
   padding: 1rem;
 
-  input {
-    border: none;
-    background: none;
+  border: $border_width solid transparent;
 
-    margin-inline: 1rem;
+  margin-inline: 1rem;
 
-    font-family: Source Sans Pro, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
+  font-family: Source Sans Pro, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
 
-    color: rgba(33, 33, 33, 0.8);
+  color: rgba(33, 33, 33, 0.8);
 
-    &:focus {
-      border: none;
-    }
+  &:focus {
+    border: $border_width solid transparentize($color-primary, 0.5);
+    outline: none;
   }
 }
 
 .cardsContainer {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-top: 2rem;
 }
 

@@ -12,7 +12,7 @@ type ContentWrapProps = {
 
 const ContentPageBase: React.FC<HTMLAttributes<HTMLDivElement> & ContentWrapProps> = ({
     useHeader = true,
-    bgColor = "bg-primary-gradient",
+    bgColor = "bg-grey-gradient",
     children,
     className,
     ...rest

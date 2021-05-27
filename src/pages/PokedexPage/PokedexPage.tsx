@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
-import { usePokemons } from "../../hooks";
+import useApiData from "../../hooks/useApiData";
+import { fetchPokemons } from "../../api/api";
+import useDebounce from "../../hooks/useDebounce";
 
 const PokedexPage: React.FC = () => {
-    const { data, isLoading, errorMessage } = usePokemons();
+    const [searchValue, setSearchValue] = useState<string>("");
+
+    const debouncedValue = useDebounce(searchValue, 500);
+
+    const query = { name: debouncedValue };
+    const { data, isLoading, errorMessage } = useApiData(fetchPokemons, { query }, [debouncedValue]);
+
+    const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+        setSearchValue(event.target.value);
+    };
 
     return (
-        <ContentPageBase className={styles.root} bgColor="bg-grey-gradient">
+        <ContentPageBase className={styles.root}>
             {!errorMessage && (
                 <h1 className={styles.headText}>
                     {isLoading ? (
@@ -26,9 +37,9 @@ const PokedexPage: React.FC = () => {
                     <p className={styles.error}>{errorMessage}</p>
                 </>
             )}
-            <div className={styles.searchInput}>
-                <input placeholder="Enter pokemon name..." />
-            </div>
+
+            <input className={styles.searchInput} placeholder="Enter pokemon name..." value={searchValue}
+                   onChange={handleSearchChange} />
 
             <div className={styles.cardsContainer}>
                 {data?.pokemons?.map(pokemon => (

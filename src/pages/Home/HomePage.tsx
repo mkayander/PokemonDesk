@@ -9,7 +9,7 @@ import { RouteLink } from "../../routes";
 
 const HomePage = () => {
     return (
-        <ContentPageBase className={styles.main}>
+        <ContentPageBase className={styles.main} bgColor="bg-primary-gradient">
             <div className={styles.column}>
                 <Heading variant="h1">Find all your favorite Pokemon</Heading>
                 <Heading>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
