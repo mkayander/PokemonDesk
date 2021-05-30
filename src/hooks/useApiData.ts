@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ApiOperation, PathArguments } from "../api/api";
+import { ApiOperation, RequestArguments } from "../api/api";
 
 interface ApiDataHook<T> {
     data: T | null;
@@ -7,7 +7,7 @@ interface ApiDataHook<T> {
     errorMessage: string | null;
 }
 
-function useApiData<T>(apiOperation: ApiOperation<T>, args?: PathArguments, deps: any[] = []): ApiDataHook<T> {
+function useApiData<T>(apiOperation: ApiOperation<T>, args?: RequestArguments, deps: any[] = []): ApiDataHook<T> {
     const [data, setData] = useState<T | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);

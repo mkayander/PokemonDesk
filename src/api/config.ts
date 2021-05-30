@@ -17,9 +17,17 @@ const config = {
         },
         getPokemonById: {
             method: "GET",
-            pathname: "pokemon/:id"
-        }
+            pathname: "pokemon/:id",
+        },
+        createPokemon: {
+            method: "POST",
+            pathname: "pokemons",
+        },
     },
+    /**
+     * Disallow the use of 'body' in the request for the following methods
+     */
+    nonBodyMethods: ["GET", "DELETE", "TRACE", "OPTIONS", "HEAD"],
 };
 
 export const url = (endpoint: Endpoint) => {

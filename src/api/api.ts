@@ -7,12 +7,22 @@ type UrlQuery = {
     name: string
 }
 
-export type PathArguments = {
+export type RequestArguments = {
+    /**
+     * GET query parameters
+     */
     query?: UrlQuery
+    /**
+     * Positional URL path arguments
+     */
     urlArgs?: Record<string, string>
+    /**
+     * Request Body data for POST, PUT, PATCH etc.
+     */
+    body?: object
 }
 
-export type ApiOperation<T> = (args?: PathArguments) => Promise<T>;
+export type ApiOperation<T> = (args?: RequestArguments) => Promise<T>;
 
 export type PokemonsApiResult = PokemonsListInfo & {
     pokemons: Pokemon[];
