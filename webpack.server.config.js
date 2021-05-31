@@ -11,7 +11,7 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
     },
     mode: NODE_ENV || "development", // Use Dev mode by default
-    entry: path.resolve(__dirname, "src/server/server.js"), // Absolute path to app's entry point
+    entry: path.resolve(__dirname, "src/server/server.jsx"), // Absolute path to app's entry point
     output: {
         path: path.resolve(__dirname, "dist"), // Where to save the bundle
         filename: "server.js", // Bundle filename

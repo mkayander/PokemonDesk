@@ -1,4 +1,9 @@
-const Hapi = require("@hapi/hapi");
+// eslint-disable-next-line no-use-before-define
+import React from "react";
+import Hapi from "@hapi/hapi";
+import ReactDOMServer from "react-dom/server";
+import { setPath } from "@patched/hookrouter";
+import App from "../App";
 
 const init = async () => {
     const server = Hapi.server({
@@ -9,8 +14,9 @@ const init = async () => {
     server.route({
         method: "GET",
         path: "/{any*}",
-        handler: (request, h) => {
-            return `Hello World! This is page ${request.path}`;
+        handler: request => {
+            setPath(request.path);
+            return ReactDOMServer.renderToString(<App />);
         },
     });
 
@@ -23,4 +29,4 @@ process.on("unhandledRejection", err => {
     process.exit(1);
 });
 
-init();
+init().then(r => r);
