@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
     },
+    ignorePatterns: ["webpack.config.js", "webpack.client.config.js", "webpack.server.config.js"],
     extends: ["airbnb", "airbnb/hooks", "react-app", "prettier", "prettier/react"],
     parser: "@typescript-eslint/parser",
     parserOptions: {
