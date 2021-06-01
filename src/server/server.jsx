@@ -12,6 +12,7 @@ const init = async () => {
     const server = Hapi.server({
         port: 3000,
         host: "localhost",
+        debug: { request: ['error'] }
     });
 
     // eslint-disable-next-line global-require
