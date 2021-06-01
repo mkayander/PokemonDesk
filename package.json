@@ -8,8 +8,10 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/hapi": "^20.1.3",
+    "@hapi/inert": "^6.0.3",
     "@patched/hookrouter": "^1.3.1",
     "classnames": "^2.3.1",
+    "handlebars": "^4.7.7",
     "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -40,6 +42,7 @@
     "html-webpack-plugin": "^4.5.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.1",
+    "mini-css-extract-plugin": "^1.6.0",
     "prettier": "2.1.2",
     "pretty-quick": "3.1.0",
     "sass": "^1.32.12",
