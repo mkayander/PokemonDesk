@@ -15,6 +15,13 @@ const init = async () => {
         debug: { request: ['error'] }
     });
 
+    server.events.on('log', (event, tags) => {
+
+        if (tags.error) {
+            console.error(`Server error: ${event.error ? event.error.message : 'unknown'}`);
+        }
+    });
+
     // eslint-disable-next-line global-require
     await server.register(require("@hapi/inert"));
 
