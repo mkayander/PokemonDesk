@@ -14,4 +14,6 @@ export type BgColor =
     | "bg-grey-gradient"
     | "bg-white";
 
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
+window.addEventListener("load", ev => {
+    ReactDOM.render(React.createElement(App), document.getElementById("root"));
+});
