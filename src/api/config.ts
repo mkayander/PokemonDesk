@@ -19,6 +19,10 @@ const config = {
             method: "GET",
             pathname: "pokemon/:id",
         },
+        getPokemonTypes: {
+            method: "GET",
+            pathname: "types"
+        },
         createPokemon: {
             method: "POST",
             pathname: "pokemons",

@@ -15,7 +15,7 @@ describe("getUrlWithParams.ts", () => {
         expect(result).toEqual<UrlObject>({
             protocol: "https",
             hostname: "zar.hosthot.ru",
-            pathname: "/api/v1/pokemons",
+            pathname: "/api/v1/pokemonsReducer",
             query: undefined,
         });
     });
@@ -26,7 +26,7 @@ describe("getUrlWithParams.ts", () => {
         expect(result).toEqual<UrlObject>({
             protocol: "https",
             hostname: "zar.hosthot.ru",
-            pathname: "/api/v1/pokemons",
+            pathname: "/api/v1/pokemonsReducer",
             query: { name: "Pikachu" },
         });
     });
@@ -59,7 +59,7 @@ describe("getUrlWithParams.ts", () => {
         expect(result).toEqual<UrlObject>({
             protocol: "https",
             hostname: "zar.hosthot.ru",
-            pathname: "/api/v1/pokemons",
+            pathname: "/api/v1/pokemonsReducer",
             query: undefined,
         });
     });

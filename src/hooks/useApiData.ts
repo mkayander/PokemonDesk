@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { ApiOperation, RequestArguments } from "../api/api";
 
-interface ApiDataHook<T> {
+export interface ApiData<T> {
     data: T | null;
     isLoading: boolean;
     errorMessage: string | null;
 }
 
-function useApiData<T>(apiOperation: ApiOperation<T>, args?: RequestArguments, deps: any[] = []): ApiDataHook<T> {
+function useApiData<T>(apiOperation: ApiOperation<T>, args?: RequestArguments, deps: any[] = []): ApiData<T> {
     const [data, setData] = useState<T | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -23,6 +23,7 @@ function useApiData<T>(apiOperation: ApiOperation<T>, args?: RequestArguments, d
             })
             .catch(reason => setErrorMessage(reason.message))
             .finally(() => setIsLoading(false));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [apiOperation, ...deps]);
 
     return { data, isLoading, errorMessage };

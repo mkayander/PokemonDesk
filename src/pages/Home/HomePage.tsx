@@ -14,7 +14,7 @@ const HomePage = () => {
                 <Heading variant="h1">Find all your favorite Pokemon</Heading>
                 <Heading>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
                 <Button text="Start now!" fullWidth bgColor="bg-warning" />
-                <Button text="See pokemons" onClick={() => navigate(RouteLink.POKEDEX)} />
+                <Button text="See pokemonsReducer" onClick={() => navigate(RouteLink.POKEDEX)} />
                 <Button text="Read more..." bgColor="bg-secondary" btnSize={BtnSize.small} />
             </div>
             <div className={classNames(styles.column, styles.contentRight)}>
