@@ -19,10 +19,10 @@ async function request<K extends keyof ApiEndpoints>(
 
     // This should theoretically work faster than Array.includes()
     switch (endpoint.method) {
-        case "HEAD":
-        case "OPTIONS":
-        case "TRACE":
-        case "DELETE":
+        // case "HEAD":
+        // case "OPTIONS":
+        // case "TRACE":
+        // case "DELETE":
         case "GET": {
             if (args?.body) {
                 // These methods are not allowed to have body
@@ -37,6 +37,7 @@ async function request<K extends keyof ApiEndpoints>(
             const body = args?.body ?? {};
             if (Object.keys(body).length > 0) {
                 fetchOptions.body = JSON.stringify(body);
+                // @ts-ignore: TS2367
             } else if (endpoint.method !== "GET") {
                 throw new ParameterError(`Body should not be empty for ${endpoint.method} HTTP method!`);
             }
