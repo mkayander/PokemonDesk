@@ -29,7 +29,7 @@ const config = {
             pathname: "pokemons",
         },
     },
-};
+} as const;
 
 export type ApiEndpoints = typeof config.endpoints;
 
