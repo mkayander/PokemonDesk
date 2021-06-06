@@ -15,7 +15,7 @@ const PokemonDetailsCard: React.FC<PokemonDetailsCardProps> = ({ pokemon }) => {
             <div className={styles.display}>
                 <img src={pokemon.img} alt="Pokemon" />
                 <div className={styles.labelsWrap}>
-                    {pokemon.types.map(value => <TypeLabel type={value} />)}
+                    {pokemon.types.map(value => <TypeLabel key={value} type={value} />)}
                 </div>
             </div>
             <div className={styles.info}>

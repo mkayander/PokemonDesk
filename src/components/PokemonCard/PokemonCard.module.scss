@@ -140,4 +140,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  & > * {
+    margin-right: 0.5rem;
+  }
 }
