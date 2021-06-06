@@ -7,6 +7,8 @@ export interface ApiData<T> {
     errorMessage: string | null;
 }
 
+export const emptyApiData = { data: null, isLoading: false, errorMessage: null };
+
 function useApiData<T>(apiOperation: ApiOperation<T>, args?: RequestArguments, deps: any[] = []): ApiData<T> {
     const [data, setData] = useState<T | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);

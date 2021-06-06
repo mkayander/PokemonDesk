@@ -1,32 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
-import useApiData from "../../hooks/useApiData";
-import { fetchPokemons } from "../../api/api";
 import useDebounce from "../../hooks/useDebounce";
-import { getFetchTypesAction, getPokemonTypes, isPokemonTypesLoading } from "../../store/pokemonsReducer";
+import useReduxApiData from "../../hooks/useReduxApiData";
 
 const PokedexPage: React.FC = () => {
-    const dispatch = useDispatch();
-    const types = useSelector(getPokemonTypes);
-    const isTypesLoading = useSelector(isPokemonTypesLoading);
-    console.log("Pokedex redux types data: ", types);
     const [searchValue, setSearchValue] = useState<string>("");
 
     const debouncedValue = useDebounce(searchValue, 500);
 
     const query = { name: debouncedValue };
-    const { data, isLoading, errorMessage } = useApiData(fetchPokemons, { query }, [debouncedValue]);
+    const { data: pokemonsData, isLoading, errorMessage } = useReduxApiData("pokemons", { query }, [debouncedValue]);
+
+    const { data: typesData, isLoading: isTypesLoading } = useReduxApiData("types");
 
     const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         setSearchValue(event.target.value);
     };
-
-    useEffect(() => {
-        dispatch(getFetchTypesAction());
-    }, [dispatch]);
 
     return (
         <ContentPageBase className={styles.root}>
@@ -36,7 +27,7 @@ const PokedexPage: React.FC = () => {
                         <span>Loading...</span>
                     ) : (
                         <span>
-                            {data?.total} <b>Pokemons</b> for you to choose your favorite
+                            {pokemonsData?.total} <b>Pokemons</b> for you to choose your favorite
                         </span>
                     )}
                 </h1>
@@ -55,10 +46,10 @@ const PokedexPage: React.FC = () => {
                 onChange={handleSearchChange}
             />
 
-            <div>{isTypesLoading ? "Loading types..." : types?.map(value => <div>{value}</div>)}</div>
+            <div>{isTypesLoading ? "Loading types..." : typesData?.map(value => <div>{value}</div>)}</div>
 
             <div className={styles.cardsContainer}>
-                {data?.pokemons?.map(pokemon => (
+                {pokemonsData?.pokemons?.map(pokemon => (
                     <PokemonCard key={pokemon.id} pokemon={pokemon} />
                 ))}
             </div>
