@@ -1,26 +1,25 @@
 import { Pokemon } from "../data/models/Pokemon";
-import { PokemonRaw, PokemonsListInfo, PokemonsResponse } from "../data/models/response/PokemonsResponse";
-import config from "./config";
+import { PokemonRaw, PokemonsListInfo } from "../data/models/response/PokemonsResponse";
 import request from "./request";
 
 type UrlQuery = {
-    name: string
-}
+    name: string;
+};
 
 export type RequestArguments = {
     /**
      * GET query parameters
      */
-    query?: UrlQuery
+    query?: UrlQuery;
     /**
      * Positional URL path arguments
      */
-    urlArgs?: Record<string, string>
+    urlArgs?: Record<string, string>;
     /**
      * Request Body data for POST, PUT, PATCH etc.
      */
-    body?: object
-}
+    body?: object;
+};
 
 export type ApiOperation<T> = (args?: RequestArguments) => Promise<T>;
 
@@ -42,8 +41,8 @@ export function mapRawPokemon(rawData: PokemonRaw): Pokemon {
     };
 }
 
-export const fetchPokemons: ApiOperation<PokemonsApiResult> = async (args) => {
-    const data: PokemonsResponse = await request(config.endpoints.getPokemons, args);
+export const fetchPokemons: ApiOperation<PokemonsApiResult> = async args => {
+    const data = await request("getPokemons", args);
 
     console.log("***: newData: ", data);
 
@@ -53,8 +52,8 @@ export const fetchPokemons: ApiOperation<PokemonsApiResult> = async (args) => {
     };
 };
 
-export const fetchPokemonById: ApiOperation<Pokemon> = async (args) => {
-    const data: PokemonRaw = await request(config.endpoints.getPokemonById, args);
+export const fetchPokemonById: ApiOperation<Pokemon> = async args => {
+    const data = await request("getPokemonById", args);
 
     return mapRawPokemon(data);
 };

@@ -29,6 +29,8 @@ export type PokemonRaw = {
     weight: number;
 }
 
+export type PokemonTypes = string[]
+
 export type PokemonsResponse = PokemonsListInfo & {
     pokemons: Array<PokemonRaw>;
 };

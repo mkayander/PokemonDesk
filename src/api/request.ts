@@ -1,11 +1,16 @@
 import Url from "url";
 import getUrlWithParams from "../utils/getUrlWithParams";
-import { Endpoint } from "./config";
+import config, { ApiEndpoints, ReturnTypeOfEndpoint } from "./config";
 import { RequestArguments } from "./api";
 import HttpError from "../exceptions/HttpError";
 import ParameterError from "../exceptions/ParameterError";
 
-async function request(endpoint: Endpoint, args?: RequestArguments): Promise<any> {
+async function request<K extends keyof ApiEndpoints>(
+    endpointKey: K,
+    args?: RequestArguments
+): Promise<ReturnTypeOfEndpoint<K>> {
+    const endpoint = config.endpoints[endpointKey];
+
     const urlObject = getUrlWithParams(endpoint, args);
 
     const fetchOptions: RequestInit = {
