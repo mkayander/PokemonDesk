@@ -19,6 +19,8 @@ const PokedexPage: React.FC = () => {
         setSearchValue(event.target.value);
     };
 
+    console.log("errorMessage", errorMessage);
+
     return (
         <ContentPageBase className={styles.root}>
             {!errorMessage && (

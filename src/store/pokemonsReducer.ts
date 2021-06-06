@@ -88,7 +88,7 @@ export const getFetchTypesAction = (args?: RequestArguments) => {
             dispatch({ type: PokemonsActionTypes.FETCH_RESOLVE, field: "types", payload: response });
         } catch (e) {
             console.error(e);
-            dispatch({ type: PokemonsActionTypes.FETCH_REJECT, field: "types", payload: e });
+            dispatch({ type: PokemonsActionTypes.FETCH_REJECT, field: "types", payload: e.message });
         }
     };
 };
@@ -101,7 +101,7 @@ export const getFetchPokemonsAction = (args?: RequestArguments) => {
             dispatch({ type: PokemonsActionTypes.FETCH_RESOLVE, field: "pokemons", payload: response });
         } catch (e) {
             console.error(e);
-            dispatch({ type: PokemonsActionTypes.FETCH_REJECT, field: "pokemons", payload: e });
+            dispatch({ type: PokemonsActionTypes.FETCH_REJECT, field: "pokemons", payload: e.message });
         }
     };
 };
