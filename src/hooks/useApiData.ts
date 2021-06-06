@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ApiOperation, RequestArguments } from "../api/api";
 
 export interface ApiData<T> {
-    data: T | null;
+    data: T | null | undefined;
     isLoading: boolean;
     errorMessage: string | null;
 }

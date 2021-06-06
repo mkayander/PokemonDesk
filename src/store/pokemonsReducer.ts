@@ -1,9 +1,11 @@
 import { Dispatch, Reducer } from "redux";
 import { ApiData } from "../hooks/useApiData";
 import request from "../api/request";
+import { PokemonTypes } from "../data/models/response/PokemonsResponse";
+import { StoreState } from "./index";
 
-type PokemonsState = {
-    types: ApiData<any>;
+export type PokemonsState = {
+    types: ApiData<PokemonTypes>;
 };
 
 export enum PokemonsActionTypes {
@@ -66,12 +68,14 @@ const pokemonsReducer: Reducer<PokemonsState, PokemonsReducerActions> = (state =
     }
 };
 
+export const getPokemonTypes = (state: StoreState) => state.pokemons.types.data
+export const isPokemonTypesLoading = (state: StoreState) => state.pokemons.types.isLoading
+
 export const getFetchTypesAction = () => {
     return async (dispatch: Dispatch<PokemonsReducerActions>) => {
         dispatch({ type: PokemonsActionTypes.FETCH_TYPES });
         try {
             const response = await request("getPokemonTypes");
-            console.log("## - response: ", response);
             dispatch({ type: PokemonsActionTypes.FETCH_TYPES_RESOLVE, payload: response });
         } catch (e) {
             console.error(e);

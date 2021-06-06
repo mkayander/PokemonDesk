@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import pokemonsReducer from "./pokemonsReducer";
+import pokemonsReducer, { PokemonsState } from "./pokemonsReducer";
 import appReducer from "./appReducer";
+
+export type StoreState = {
+    pokemons: PokemonsState
+}
 
 const createRootReducer = () =>
     combineReducers({

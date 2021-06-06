@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
 import useApiData from "../../hooks/useApiData";
 import { fetchPokemons } from "../../api/api";
 import useDebounce from "../../hooks/useDebounce";
-import { getFetchTypesAction } from "../../store/pokemonsReducer";
+import { getFetchTypesAction, getPokemonTypes, isPokemonTypesLoading } from "../../store/pokemonsReducer";
 
 const PokedexPage: React.FC = () => {
     const dispatch = useDispatch();
+    const types = useSelector(getPokemonTypes);
+    const isTypesLoading = useSelector(isPokemonTypesLoading);
+    console.log("Pokedex redux types data: ", types);
     const [searchValue, setSearchValue] = useState<string>("");
 
     const debouncedValue = useDebounce(searchValue, 500);
@@ -22,9 +25,8 @@ const PokedexPage: React.FC = () => {
     };
 
     useEffect(() => {
-        dispatch(getFetchTypesAction())
+        dispatch(getFetchTypesAction());
     }, [dispatch]);
-
 
     return (
         <ContentPageBase className={styles.root}>
@@ -52,6 +54,8 @@ const PokedexPage: React.FC = () => {
                 value={searchValue}
                 onChange={handleSearchChange}
             />
+
+            <div>{isTypesLoading ? "Loading types..." : types?.map(value => <div>{value}</div>)}</div>
 
             <div className={styles.cardsContainer}>
                 {data?.pokemons?.map(pokemon => (
