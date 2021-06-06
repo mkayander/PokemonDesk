@@ -1,14 +1,16 @@
-import { Reducer } from "redux";
+import { Dispatch, Reducer } from "redux";
 import { ApiData } from "../hooks/useApiData";
+import request from "../api/request";
 
 type PokemonsState = {
     types: ApiData<any>;
 };
 
-type PokemonsAction = {
-    type: "FETCH_TYPES" | "FETCH_TYPES_RESOLVE" | "FETCH_TYPES_REJECT";
-    payload: any;
-};
+export enum PokemonsActionTypes {
+    FETCH_TYPES,
+    FETCH_TYPES_RESOLVE,
+    FETCH_TYPES_REJECT,
+}
 
 const initialState: PokemonsState = {
     types: {
@@ -18,9 +20,21 @@ const initialState: PokemonsState = {
     },
 };
 
-const pokemonsReducer: Reducer<PokemonsState, PokemonsAction> = (state = initialState, action) => {
+type TypesAction = {
+    type: PokemonsActionTypes.FETCH_TYPES | PokemonsActionTypes.FETCH_TYPES_RESOLVE;
+    payload?: string[];
+};
+
+type RejectAction = {
+    type: PokemonsActionTypes.FETCH_TYPES_REJECT;
+    payload: string;
+};
+
+type PokemonsReducerActions = TypesAction | RejectAction;
+
+const pokemonsReducer: Reducer<PokemonsState, PokemonsReducerActions> = (state = initialState, action) => {
     switch (action.type) {
-        case "FETCH_TYPES":
+        case PokemonsActionTypes.FETCH_TYPES:
             return {
                 ...state,
                 types: {
@@ -29,7 +43,7 @@ const pokemonsReducer: Reducer<PokemonsState, PokemonsAction> = (state = initial
                     errorMessage: null,
                 },
             };
-        case "FETCH_TYPES_RESOLVE":
+        case PokemonsActionTypes.FETCH_TYPES_RESOLVE:
             return {
                 ...state,
                 types: {
@@ -38,7 +52,7 @@ const pokemonsReducer: Reducer<PokemonsState, PokemonsAction> = (state = initial
                     errorMessage: null,
                 },
             };
-        case "FETCH_TYPES_REJECT":
+        case PokemonsActionTypes.FETCH_TYPES_REJECT:
             return {
                 ...state,
                 types: {
@@ -50,6 +64,20 @@ const pokemonsReducer: Reducer<PokemonsState, PokemonsAction> = (state = initial
         default:
             return state;
     }
+};
+
+export const getFetchTypesAction = () => {
+    return async (dispatch: Dispatch<PokemonsReducerActions>) => {
+        dispatch({ type: PokemonsActionTypes.FETCH_TYPES });
+        try {
+            const response = await request("getPokemonTypes");
+            console.log("## - response: ", response);
+            dispatch({ type: PokemonsActionTypes.FETCH_TYPES_RESOLVE, payload: response });
+        } catch (e) {
+            console.error(e);
+            dispatch({ type: PokemonsActionTypes.FETCH_TYPES_REJECT, payload: e });
+        }
+    };
 };
 
 export default pokemonsReducer;
