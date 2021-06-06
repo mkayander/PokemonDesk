@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ContentPageBase, PokemonCard } from "../../components";
 
 import styles from "./PokedexPage.module.scss";
 import useApiData from "../../hooks/useApiData";
 import { fetchPokemons } from "../../api/api";
 import useDebounce from "../../hooks/useDebounce";
+import { getFetchTypesAction } from "../../store/pokemonsReducer";
 
 const PokedexPage: React.FC = () => {
+    const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState<string>("");
 
     const debouncedValue = useDebounce(searchValue, 500);
@@ -17,6 +20,11 @@ const PokedexPage: React.FC = () => {
     const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         setSearchValue(event.target.value);
     };
+
+    useEffect(() => {
+        dispatch(getFetchTypesAction())
+    }, [dispatch]);
+
 
     return (
         <ContentPageBase className={styles.root}>
@@ -38,8 +46,12 @@ const PokedexPage: React.FC = () => {
                 </>
             )}
 
-            <input className={styles.searchInput} placeholder="Enter pokemon name..." value={searchValue}
-                   onChange={handleSearchChange} />
+            <input
+                className={styles.searchInput}
+                placeholder="Enter pokemon name..."
+                value={searchValue}
+                onChange={handleSearchChange}
+            />
 
             <div className={styles.cardsContainer}>
                 {data?.pokemons?.map(pokemon => (
