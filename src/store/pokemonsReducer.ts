@@ -24,7 +24,7 @@ export enum PokemonsActionTypes {
 export type StateKey = keyof PokemonsState;
 export type StateFieldType<K extends StateKey> = PokemonsState[K]["data"];
 type FetchAction<K extends StateKey> = {
-    type: PokemonsActionTypes.FETCH | PokemonsActionTypes.FETCH_RESOLVE | PokemonsActionTypes.FETCH_REJECT;
+    type: PokemonsActionTypes;
     field: K;
     payload?: StateFieldType<K>;
 };

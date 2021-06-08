@@ -20,7 +20,7 @@ function useReduxApiData<K extends StateKey>(field: K, args?: RequestArguments, 
     useEffect(() => {
         dispatch(getFetchAction(field, args));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [...deps]);
+    }, deps);
 
     return data;
 }
