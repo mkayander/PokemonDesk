@@ -1,6 +1,6 @@
 const path = require("path"); // NodeJS package to resolve filesystem paths
 const nodeExternals = require("webpack-node-externals");
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const { NODE_ENV } = process.env;
 
@@ -18,14 +18,7 @@ module.exports = {
         filename: "server.js", // Bundle filename
     },
     externals: [nodeExternals()],
-    // plugins: [
-    //     new MiniCssExtractPlugin({
-    //         attributes: {
-    //             id: 'target',
-    //             'data-target': 'example',
-    //         },
-    //     }),
-    // ],
+    plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
             {
@@ -36,7 +29,7 @@ module.exports = {
                 test: /\.(s*)css$/,
                 use: [
                     // "style-loader",
-                    // MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
                         options: {
