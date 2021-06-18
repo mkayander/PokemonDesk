@@ -1,11 +1,16 @@
 import Url from "url";
 import getUrlWithParams from "../utils/getUrlWithParams";
-import { Endpoint } from "./config";
+import config, { ApiEndpoints, ReturnTypeOfEndpoint } from "./config";
 import { RequestArguments } from "./api";
 import HttpError from "../exceptions/HttpError";
 import ParameterError from "../exceptions/ParameterError";
 
-async function request(endpoint: Endpoint, args?: RequestArguments): Promise<any> {
+async function request<K extends keyof ApiEndpoints>(
+    endpointKey: K,
+    args?: RequestArguments
+): Promise<ReturnTypeOfEndpoint<K>> {
+    const endpoint = config.endpoints[endpointKey];
+
     const urlObject = getUrlWithParams(endpoint, args);
 
     const fetchOptions: RequestInit = {
@@ -14,10 +19,10 @@ async function request(endpoint: Endpoint, args?: RequestArguments): Promise<any
 
     // This should theoretically work faster than Array.includes()
     switch (endpoint.method) {
-        case "HEAD":
-        case "OPTIONS":
-        case "TRACE":
-        case "DELETE":
+        // case "HEAD":
+        // case "OPTIONS":
+        // case "TRACE":
+        // case "DELETE":
         case "GET": {
             if (args?.body) {
                 // These methods are not allowed to have body
@@ -32,6 +37,7 @@ async function request(endpoint: Endpoint, args?: RequestArguments): Promise<any
             const body = args?.body ?? {};
             if (Object.keys(body).length > 0) {
                 fetchOptions.body = JSON.stringify(body);
+                // @ts-ignore: TS2367
             } else if (endpoint.method !== "GET") {
                 throw new ParameterError(`Body should not be empty for ${endpoint.method} HTTP method!`);
             }

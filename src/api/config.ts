@@ -1,5 +1,6 @@
+import { PokemonRaw, PokemonsResponse, PokemonTypes } from "../data/models/response/PokemonsResponse";
+
 export type Endpoint = {
-    name?: string;
     method: string;
     pathname: string;
 };
@@ -19,16 +20,26 @@ const config = {
             method: "GET",
             pathname: "pokemon/:id",
         },
+        getPokemonTypes: {
+            method: "GET",
+            pathname: "types",
+        },
         createPokemon: {
             method: "POST",
             pathname: "pokemons",
         },
     },
-    /**
-     * Disallow the use of 'body' in the request for the following methods
-     */
-    nonBodyMethods: ["GET", "DELETE", "TRACE", "OPTIONS", "HEAD"],
-};
+} as const;
+
+export type ApiEndpoints = typeof config.endpoints;
+
+export type ReturnTypeOfEndpoint<T extends keyof ApiEndpoints> = T extends "getPokemons"
+    ? PokemonsResponse
+    : T extends "getPokemonById"
+    ? PokemonRaw
+    : T extends "getPokemonTypes"
+    ? PokemonTypes
+    : any;
 
 export const url = (endpoint: Endpoint) => {
     return `${config.server.protocol}://${config.server.hostname}/${config.server.apiRoot}/${endpoint.pathname}`;
