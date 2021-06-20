@@ -8,12 +8,13 @@ import ReactDOMServer from "react-dom/server";
 import { setPath } from "@patched/hookrouter";
 import App from "../App";
 
+const port = process.env.PORT || 3000;
+
 const IMG = /\.(jpg|jpeg|gif|png|svg)(\?v=\d+\.\d+\.\d+)?$/;
 
 const init = async () => {
     const server = Hapi.server({
-        port: 3000,
-        host: "localhost",
+        port,
         debug: { request: ["error"] },
     });
 
