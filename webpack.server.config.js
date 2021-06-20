@@ -50,7 +50,15 @@ module.exports = {
             },
             {
                 test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.url.svg/],
-                use: ["url-loader"],
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "assets/",
+                        },
+                    },
+                ],
             },
         ],
     },
