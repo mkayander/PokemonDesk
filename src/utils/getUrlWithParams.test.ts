@@ -32,7 +32,7 @@ describe("getUrlWithParams.ts", () => {
     });
 
     test("Must return correct UrlObject for endpoint without 'id' positional URL argument", () => {
-        const result = getUrlWithParams(config.endpoints.getPokemonById, { urlArgs: {id: "25"} });
+        const result = getUrlWithParams(config.endpoints.getPokemonById, { urlArgs: { id: "25" } });
 
         expect(result).toEqual<UrlObject>({
             protocol: "https",
@@ -43,7 +43,7 @@ describe("getUrlWithParams.ts", () => {
     });
 
     test("Must return correct UrlObject for endpoint without 'id' positional URL argument", () => {
-        const result = getUrlWithParams(config.endpoints.getPokemonById, { urlArgs: {id: "25"} });
+        const result = getUrlWithParams(config.endpoints.getPokemonById, { urlArgs: { id: "25" } });
 
         expect(result).toEqual<UrlObject>({
             protocol: "https",
@@ -62,5 +62,13 @@ describe("getUrlWithParams.ts", () => {
             pathname: "/api/v1/pokemons",
             query: undefined,
         });
+    });
+
+    test("Expect error for unfulfilled url parameter", () => {
+        try {
+            getUrlWithParams(config.endpoints.getPokemonById);
+        } catch (e) {
+            expect(e.message).toBe("URL argument not specified for parameter \":id\"");
+        }
     });
 });
