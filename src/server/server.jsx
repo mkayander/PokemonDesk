@@ -8,17 +8,19 @@ import ReactDOMServer from "react-dom/server";
 import { setPath } from "@patched/hookrouter";
 import App from "../App";
 
+const port = process.env.PORT || 3000;
+
+const IMG = /\.(jpg|jpeg|gif|png|svg)(\?v=\d+\.\d+\.\d+)?$/;
+
 const init = async () => {
     const server = Hapi.server({
-        port: 3000,
-        host: "localhost",
-        debug: { request: ['error'] }
+        port,
+        debug: { request: ["error"] },
     });
 
-    server.events.on('log', (event, tags) => {
-
+    server.events.on("log", (event, tags) => {
         if (tags.error) {
-            console.error(`Server error: ${event.error ? event.error.message : 'unknown'}`);
+            console.error(`Server error: ${event.error ? event.error.message : "unknown"}`);
         }
     });
 
@@ -33,16 +35,26 @@ const init = async () => {
 
     server.route({
         method: "GET",
+        path: "/main.css",
+        handler: (request, h) => h.file(path.join(process.cwd(), "dist", "main.css")),
+    });
+
+    server.route({
+        method: "GET",
         path: "/{any*}",
-        handler: request => {
+        handler: (request, h) => {
+            if (IMG.test(request.path)) {
+                const imgPath = path.join(process.cwd(), "dist", request.path);
+                console.log("img path", imgPath);
+                return h.file(imgPath);
+            }
             setPath(request.path);
             const pathToInnerHtml = path.join(process.cwd(), "dist", "index.html");
             const template = handlebars.compile(fs.readFileSync(pathToInnerHtml, "utf-8"));
             const result = ReactDOMServer.renderToString(<App />);
-            const page = template({
+            return template({
                 content: result,
             });
-            return page;
         },
     });
 

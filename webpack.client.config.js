@@ -1,5 +1,6 @@
 const path = require("path"); // NodeJS package to resolve filesystem paths
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const { NODE_ENV } = process.env;
 
@@ -32,7 +33,7 @@ module.exports = {
             {
                 test: /\.(s*)css$/,
                 use: [
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
                         options: {
@@ -65,11 +66,20 @@ module.exports = {
             // },
             {
                 test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.url.svg/],
-                use: ["url-loader"],
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "assets/",
+                        },
+                    },
+                ],
             },
         ],
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, "public/index.html"),
         }),
