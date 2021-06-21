@@ -13,7 +13,7 @@ const PokedexPage: React.FC = () => {
     const query = { name: debouncedValue };
     const { data: pokemonsData, isLoading, errorMessage } = useReduxApiData("pokemons", { query }, [debouncedValue]);
 
-    const { data: typesData, isLoading: isTypesLoading } = useReduxApiData("types");
+    // const { data: typesData, isLoading: isTypesLoading } = useReduxApiData("types");
 
     const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = event => {
         setSearchValue(event.target.value);
@@ -47,8 +47,6 @@ const PokedexPage: React.FC = () => {
                 value={searchValue}
                 onChange={handleSearchChange}
             />
-
-            <div>{isTypesLoading ? "Loading types..." : typesData?.map(value => <div>{value}</div>)}</div>
 
             <div className={styles.cardsContainer}>
                 {pokemonsData?.pokemons?.map(pokemon => (
